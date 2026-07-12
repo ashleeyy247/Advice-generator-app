@@ -42,27 +42,33 @@
     const adviceTextEl = document.getElementById('advice-text');
     const adviceIdEl = document.getElementById('advice-id')
 
-    fetchAdvice()
+    fetchAdvice(117)
     diceBtn.addEventListener("click", function () {
       fetchAdvice()
     })
 
-    async function fetchAdvice() {
+    async function fetchAdvice(id) {
       try {
-        const response = await fetch('https://api.adviceslip.com/advice')
+        let response
+        if (id) {
+          response = await fetch('https://api.adviceslip.com/advice/' + id)
+        }
+        else {
+          response = await fetch('https://api.adviceslip.com/advice')
 
+        }
         if (!response.ok) {
           return
         }
         const data = await response.json();
-        const id = data.slip.id
+        const adviceId = data.slip.id
         const advice = data.slip.advice
 
         adviceTextEl.innerText = advice;
-        adviceIdEl.innerText = id
+        adviceIdEl.innerText = adviceId
       }
       catch (error) {
-        adviceTextEl.innerText = "Unable to fetch advice";
+        adviceTextEl.innerText = "Unable to get advice";
       }
     }
   </script>
