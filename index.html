@@ -18,11 +18,11 @@
       ADVICE #<span id="advice-id"> </span>
     </div>
     <div class="advice-text">
-      <quote></quote>&ldquo;<span id="advice-text"> </span>&rdquo;
+      <q><span id="advice-text"> </span></q>
     </div>
     <div class="img-divider">
-      <img class="divider-mobile" src="./images/pattern-divider-mobile.svg">
-      <img class="divider-desktop" src="./images/pattern-divider-desktop.svg">
+      <img class="divider-mobile" src="./images/pattern-divider-mobile.svg" alt="pattern-divider-mobile">
+      <img class="divider-desktop" src="./images/pattern-divider-desktop.svg" alt="pattern-divider-desktop">
     </div>
     <div class="button-div">
       <button class="dice-button" id="dice-button">
@@ -62,7 +62,7 @@
         adviceIdEl.innerText = id
       }
       catch (error) {
-        console.log("Error" + error)
+        adviceTextEl.innerText = "Unable to fetch advice";
       }
     }
   </script>
